@@ -451,7 +451,7 @@ var resizePizzas = function(size) {
 
   // Iterates through pizza elements on the page and changes their widths
   function changePizzaSizes(size) {
-    var newWidth;
+    var newWidth; //
     switch(size) {
       case "1":
       newWidth = 25;
@@ -514,17 +514,18 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 
 
 function updatePositions() {
+
   frame++;
 
   window.performance.mark("mark_start_frame");
 
-  var items = document.querySelectorAll('.mover');
-
+  var items = document.getElementsByClassName('mover');
   var top = document.body.scrollTop / 1250;
-  var phase;
+
+
   console.log("llalalalalala:" + document.body.scrollTop);
   for (var i = 0; i < items.length; i++) {
-    phase = Math.sin(top + i % 5);
+    var phase = Math.sin(top + (i % 5));
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   }
 
@@ -545,15 +546,16 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
+  var elem;
   for (var i = 0; i < 24; i++) {
-    var elem = document.createElement('img');
+    elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
     elem.style.height = "100px";
     elem.style.width = "73.333px";
     elem.basicLeft = (i % cols) * s;
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
-    document.querySelector("#movingPizzas1").appendChild(elem);
+    document.getElementById("movingPizzas1").appendChild(elem);
   }
   updatePositions();
 });

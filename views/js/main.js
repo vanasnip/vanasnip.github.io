@@ -455,17 +455,18 @@ var resizePizzas = function(size) {
     switch(size) {
       case "1":
       newWidth = 25;
+      break;
       case "2":
-        newWidth = 33.33;
+        newWidth = 33.3;
+        break;
       case "3":
         newWidth = 50;
+        break;
       default:
         console.log("bug in sizeSwitcher");
     }
     var randPizza = document.getElementsByClassName("randomPizzaContainer");
     for (var i = 0; i < randPizza.length; i++) {
-      //var dx = determineDx(randPizza[i], size);
-      //var newwidth = (randPizza[i].offsetWidth + dx) + 'px';
       randPizza[i].style.width = newWidth + "%";
     }
   }
@@ -547,7 +548,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
   var elem;
-  for (var i = 0; i < 24; i++) {
+  for (var i = 0; i < 20; i++) {
     elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";

@@ -24,9 +24,14 @@ form {
     position: fixed;
     width: 256px;
     z-index: -1
-    will-change: transform;
+    -webkit-transform: translateZ(0);/* Ch <36, Saf 5.1+, iOS < 9.2, An =<4.4.4 */
+    -ms-transform: translateZ(0); /* IE 9 */
     transform: translateZ(0);
+
+    -webkit-transform: translate3d(0,0,0);/* Ch <36, Saf 5.1+, iOS < 9.2, An =<4.4.4 */
+    -ms-transform: translate3d(0,0,0); /* IE 9 */
     transform: translate3d(0,0,0);
+    -webkit-backface-visibility: hidden; /* Chrome, Safari, Opera */
     backspace-visibility: hidden;
 }
 .randomPizzaContainer {

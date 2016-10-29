@@ -13,7 +13,7 @@ Some useful tips to help you get started:
 
 
 ####Part 2: Optimize Frames per Second in pizza.html
-
+1. Added css to .mover class for hardware accelarated CSS
 1. I optimised the photograph as well as reduced the file size for faster download
 1. Altered .querySelector() tp .getElementById() because the web API call is faster
 1. Altered .querySelectorAll() to .GetElementsByClassName() web api call is faster

@@ -23,7 +23,7 @@ form {
 .mover {
     position: fixed;
     width: 256px;
-    z-index: -1
+    z-index: -1;
     -webkit-transform: translateZ(0);/* Ch <36, Saf 5.1+, iOS < 9.2, An =<4.4.4 */
     -ms-transform: translateZ(0); /* IE 9 */
     transform: translateZ(0);

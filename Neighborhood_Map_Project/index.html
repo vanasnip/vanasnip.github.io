@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="js/lib/knockout-3.4.1.js"></script>
+  <title>Maps Project</title>
+</head>
+
+<body id="main" class="container-fluid">
+  <div class="row">
+    <nav class="col-xs-12 dropdown visible-xs hidden-sm">
+      <button class=" col-xs-2 btn btn-primary dropdown-toggle pull-left" type="button" data-toggle="dropdown">
+        <span class="button-icon">&#9660;</span>
+      </button>
+      <h1 class="col-xs-8 col-xs-offset-2">London &amp; le Galleria</h1>
+      <img class="lon-eye-icon col-xs-2" src="imgs/lon-eye.png" alt="">
+      <div class="col-xs-12 dropdown-menu">
+        <input placeholder="search" class="col-xs-12" data-bind="value: Query, valueUpdate: 'keyup'" autocomplete="off">
+        <ul class="col-xs-12" data-bind="foreach: searchResults">
+          <li class="col-xs-6 locations" data-bind="text: title, click: $parent.setMarker"></li>
+        </ul>
+        <button class="recenter col-xs-12">click to recenter <span>&#9673;</span>
+        </button>
+      </div>
+    </nav>
+    <div class="col-sm-3 col-lg-2 hidden-xs sidebar">
+      <div class="col-xs-12 searchArea">
+        <h1 class="col-xs-12">London &amp; le Galleria</h1>
+        <input placeholder="search" class="col-xs-12" data-bind="value: Query, valueUpdate: 'keyup'" autocomplete="off">
+        <ul data-bind="foreach: searchResults()">
+          <li class="col-xs-12 locations" data-bind="text: title, click: $parent.setMarker"></li>
+        </ul>
+        <button class="recenter col-xs-12">click to recenter <span>&#9673;</span>
+        </button>
+      </div>
+      <div class="col-xs-12 london-eye">
+        <img class="col-xs-12" src="imgs/lon-eye.png" alt="">
+      </div>
+
+    </div>
+    <div id="map" class="col-sm-9 col-lg-10"></div>
+  </div>
+
+
+  <script src="js/app.js"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9lp_4MnBzuh-R8-L8f8yQ15QKgHeRMnI&v=3&callback=initMap"></script>
+
+</body>
+
+</html>

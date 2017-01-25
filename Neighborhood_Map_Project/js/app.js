@@ -12,7 +12,7 @@ function Model(){
     streetAddress: "Trafalgar Square",
     cityAddress: "London, WC2N 5DN",
     id: "nav0",
-    visible: ko.observable(true),
+    visible: true,
     isMarker: true
   },{
     title: "National Portrait Gallery",
@@ -20,7 +20,7 @@ function Model(){
     streetAddress: "St. Martin's Pl",
     cityAddress: "London WC2H 0HE",
     id: "nav0",
-    visible: ko.observable(true),
+    visible: true,
     isMarker: true
   },{
     title: "Tate Modern",
@@ -28,7 +28,7 @@ function Model(){
     streetAddress: "Bankside",
     cityAddress: "London SE1 9TG",
     id: "nav0",
-    visible: ko.observable(true),
+    visible: true,
     isMarker: true
   },{
     title: "Saatchi Gallery",
@@ -36,7 +36,7 @@ function Model(){
     streetAddress: "Duke Of York's HQ, King's Rd",
     cityAddress: "London SW3 4RY",
     id: "nav0",
-    visible: ko.observable(true),
+    visible: true,
     isMarker: true
   },{
     title: "Natural History Museum",
@@ -44,7 +44,7 @@ function Model(){
     streetAddress: "Cromwell Rd",
     cityAddress: "London SW7 5BD",
     id: "nav0",
-    visible: ko.observable(true),
+    visible: true,
     isMarker: true
   },{
     title: "Tate Britain",
@@ -52,7 +52,7 @@ function Model(){
     streetAddress: "Millbank, Westminster",
     cityAddress: "London SW1P 4RG",
     id: "nav0",
-    visible: ko.observable(true),
+    visible: true,
     isMarker: true
   }];
 
@@ -77,14 +77,15 @@ function initMap() {
     var title = locations[i].title;
     var streetAddress = locations[i].streetAddress;
     var cityAddress = locations[i].cityAddress;
-
+    var visibility = locations[i].visible;
     // Create a marker per location, and put into markers array.
     var marker = new google.maps.Marker({
       map: map,
       position: position,
       title: title,
       animation: google.maps.Animation.DROP,
-      id: i,
+      visible:  visibility,
+      id: i
     });
     // Push the marker to our array of markers.
     // Create an onclick event to open an infowindow at each marker.
@@ -96,8 +97,10 @@ function initMap() {
     marker.street = streetAddress;
     marker.city = cityAddress;
     markers.push(marker);
+
     bounds.extend(markers[i].position);
   }
+  console.log(markers);
   // Extend the boundaries of the map for each marker
   map.fitBounds(bounds);
 
@@ -111,6 +114,7 @@ function initMap() {
     //bount to sidebar links giving access to marker behaviour
     this.position = ko.observable(data.position);
     this.title = ko.observable(data.title);
+    this.visibility = ko.observable(data.visible);
     this.clickable = function(){
 		//open info window when clicked
     populateInfoWindow(data, largeInfowindow);
@@ -123,6 +127,7 @@ function initMap() {
     var self = this;
     //creates array to search through and compare with input
     function ultimateList(){
+      console.log();
       var clickableArray =[];
       for(var i = 0; i < markers.length; i++){
         clickableArray[i] = new markerLoad(markers[i]);
@@ -133,12 +138,30 @@ function initMap() {
       clickedMarker.clickable(); //when side bar link is clicked open infowindow for selected location
     };
     this.searchResults = ko.computed(function() {
-        var q = Query();// typed into input to be compared
-        return ultimateList().filter(function(i) {
-          return i.title().toLowerCase().indexOf(q) >= 0;//compare all location in array with input only return matching
+      var q = Query();// typed into input to be compared
+      return ultimateList().filter(function(i) {
+        console.log("boom");
+
+        return i.title().toLowerCase().indexOf(q) >= 0;//compare all location in array with input only return matching
       });
     });
+
+    this.searchMarkers = ko.computed(function() {
+      var q = Query();// typed into input to be compared
+
+          return markers.filter(function(i) {
+            if(i.title.toLowerCase().indexOf(q) !== 0){
+              i.setMap(null);
+            } else {
+              i.setMap(map);
+            }
+
+          return i.title.toLowerCase().indexOf(q) >= 0;//compare all location in array with input only return matching
+      });
+    });
+
   };
+
   ko.applyBindings(new ViewModel());
   $(".locations").click(function(){//highlight last link in sidebar to be clicked
 				$(".locations").removeClass('selected');
@@ -167,6 +190,10 @@ function populateInfoWindow(marker, infowindow) {
 }
 
 function toggleBounce(marker) {
+  //stop all other bounces
+  for(var i = 0; i < markers.length; i++){
+    markers[i].setAnimation(null);
+  }
 	if (marker.getAnimation() !== null) {
 			marker.setAnimation(null);
 	} else {
@@ -185,36 +212,32 @@ function getFlickerImage(marker){
     //replace spaces with "+" to make it URL friendly
     searchText = searchText.replace(/\s+/g, '+');
     var URL = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=fd46fabfe3102f771ee0e03a437febf4&text=" + searchText +      "&page=1&format=json&jsoncallback=?";
-    console.log(URL);
     return URL;
   }
-  function searchFlickr(url){
-    //accessing flicker API
-    $.getJSON(url, displayImages1);
-    //This function actually does something with the data after it has been read in from the Flickr API.
-    function displayImages1(data) {
+  function searchFlickr(url){//accessing flicker API
+$.getJSON(url, displayImages1);
+//This function actually does something with the data after it has been read in from the Flickr API.
+  function displayImages1(data) {
       //Loop through the results in the JSON array of data. The 'data.photos.photo' bit is what you are trying to 'get at'. i.e. this loop looks at each photo in turn.
       var photoURL;
       // element in infowindow unique to this marker to append images
       var idMatch = ".marker0" + marker.id;
       //Gets the url for each image in recovered JSON.
-      $.each(data.photos.photo, function(i,item){
-
-
-      //only get the first three images
-      if(i < 3){
-        //construct image tag and source with in li for styling in css
-			  photoURL = "<li class'markerLiItem'><img src='" + 'http://farm' + item.farm + '.static.flickr.com/' + item.server + '/' + item.id + '_' + item.secret + '_m.jpg'+ "' alt=''></li>";
-        // append to the dom
-        $(idMatch).append(photoURL);
-        if(i===2){
-          //for last iteration add one more list element including title, street and city for display
-           photoURL =  "<li class'markerLiItem'><h3>" + marker.title + "</h3><p>" + marker.street + "</p><p>" + marker.city + "</p></li>";
-           $(idMatch).append(photoURL);
-         }
-       }
-			});
-    }
+      $.each(data.photos.photo, function(i, item) {
+          //only get the first three images
+          if (i < 3) {
+              //construct image tag and source with in li for styling in css
+              photoURL = "<li class'markerLiItem'><img src='" + 'http://farm' + item.farm + '.static.flickr.com/' + item.server + '/' + item.id + '_' + item.secret + '_m.jpg' + "' alt=''></li>";
+              // append to the dom
+              $(idMatch).append(photoURL);
+              if (i === 2) {
+                  //for last iteration add one more list element including title, street and city for display
+                  photoURL = "<li class'markerLiItem'><h3>" + marker.title + "</h3><p>" + marker.street + "</p><p>" + marker.city + "</p></li>";
+                  $(idMatch).append(photoURL);
+              }
+          }
+      });
   }
+}
 return '';
 }

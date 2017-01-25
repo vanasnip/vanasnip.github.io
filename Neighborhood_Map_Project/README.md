@@ -1,14 +1,17 @@
 # Udacity Neighborhood Map: Project 5
 ### By: Ivan M
 
-Follow this link to view to project:
+Follow this link to view to project: https://vanasnip.github.io/Neighborhood_Map_Project/
 
 ##Description:
+
 This project sets out to highlight 5 key location for experiencing classical art, contemporary art and history in central London.
 Google maps along with images from flickr have been used to illustrate in a way that I hope is not only interesting but enticing as well.
 
 ## How to use:
+
 ### 1. On Mobile:
+
 1. The first thing you will notice is a generous map with markers overlaid.
 2. Selecting any one of these markers will reveal an info window about that location.
 3. The navigation bar at the top hosts a title "London & le Galleria", as well as a large soft blue button in the top left corner.
@@ -18,10 +21,12 @@ Google maps along with images from flickr have been used to illustrate in a way 
 8. Selecting a marker by the marker itself or the links provided will reveal a green button to allow you to reset the markers as you first encountered them.
 
 ### 2. on Tablet and Desktop:
+
 1. Experiencing the app in this form factor is not unlike the mobile experience however the menu and search input are all visible so I encourage you look over the mobile section for further instruction if you have not done so already.
 2. Please note that this application has been designed to accommodate and respond to the device it has been launched on.
 
 ## Sources:
-1. [Knockoutjs](http://knockoutjs.com// "Knockoutjs")
-2. [Stackoverflow](http://stackoverflow.com// "Stackoverflow")
-3. [Flickr Api Documentation](https://www.flickr.com/services/api/// "Flickr Api Documentation")
+
+1. [Knockoutjs](http://knockoutjs.com/ "Knockoutjs")
+2. [Stackoverflow](http://stackoverflow.com/ "Stackoverflow")
+3. [Flickr Api Documentation](https:/www.flickr.com/services/api/ "Flickr Api Documentation")

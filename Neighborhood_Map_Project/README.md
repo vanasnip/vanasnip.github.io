@@ -1,7 +1,19 @@
 # Udacity Neighborhood Map: Project 5
 ### By: Ivan M
 
+##Quick view
+
 Follow this link to view to project: https://vanasnip.github.io/Neighborhood_Map_Project/
+
+
+##Opening the application locally
+
+1. Download from: https://github.com/vanasnip/Neighborhood_Map_Project
+2. Proceed to unzip the files to a location of you choosing.
+3. Navigate into the folder 'Neighborhood_Map_Project'.
+4. Select and open the file index.html in a modern browser(I recommend Google Chrome).
+5. The app should be running and in your browser should be a large map visible.
+
 
 ##Description:
 

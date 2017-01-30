@@ -6,19 +6,22 @@ body {
   box-sizing: border-box;
 }
 .sidebar {
-		display: flex;
+	display: flex;
 	flex-wrap: wrap;
 }
+
 @font-face {
-    font-family: ChampagneLimousines;
-    src: url(fonts/ChampagneLimousines.ttf);
+  font-family: ChampagneLimousines;
+  src: url(fonts/ChampagneLimousines.ttf);
 }
+
 h1,
 li,
 h3,
 p {
   text-align: center;
 }
+
 h1{
   color: #999;
   font-size: 32px;
@@ -28,23 +31,24 @@ h1{
 h3 {
   color: #a5a5a5;
   font-size: 19px;
-
 }
+
 h1 {
   font-family: ChampagneLimousines;
 }
+
 @media screen and (max-width: 767px){
   h1 {
     font-size: 32px;
   }
 }
-h3 {
 
-}
+
 p {
   padding: 0 5px;
   margin: 0;
 }
+
 .markers li {
   list-style: none;
   margin: 0;
@@ -52,30 +56,25 @@ p {
   position: relative;
   overflow: hidden;
 }
+
 .markers {
   display: flex;
   flex-wrap: wrap;
 }
-.markerLiItem {
 
-
-}
 .markerLiItem img {
   max-width: 100%;
   max-height: 100%;
   height: 100%;
-
 }
+
 div.gm-style-iw,
 div.gm-style-iw div {
-
   display: flex;
   flex-wrap: wrap;
   align-content: center;
   margin: auto;
-
 }
-
 
 div.gm-style-iw img {
   position: relative;
@@ -95,6 +94,7 @@ input {
 	background-image: none;
 	border: none;
 }
+
 #map {
   position: relative;
   min-height:100vh;
@@ -102,61 +102,74 @@ input {
   margin: 0;
   padding: 1px;
 }
+
 @media screen and (max-width: 767px){
   #map {
     min-height: calc(100vh - 65px);
   }
 }
+
 div.dropdown-menu{
   background:none;
   margin: 0;
 	border:none;
   padding: 0
 }
+
 .dropdown-menu > ul {
   background-color: #fff;
   padding:0;
   margin: 0;
 }
+
 li.locations {
   padding: 10px 0;
   color: #337ab7;
   list-style: none;
 }
+
 div.sidebar,
 div.sidebar ul {
   padding-left: 0;
   padding-right: 0;
 }
+
 div.sidebar ul {
 	align-self: flex-start;
 }
+
 div.sidebar {
 	height: 100vh;
 }
+
 div.searchArea {
 	padding: 0;
 }
+
 .london-eye {
 	align-self: flex-end;
 }
+
 li.locations:hover,
 li.selected {
   background-color: #337ab7;
   color: #fff;
   cursor: pointer;
 }
+
 li.selected{
   background: #829cb3;
 }
+
 li.softSelect {
   background: #bfbfbf;
 }
-nav.dropdown {
-    width: 100%;
 
-    padding: 0;
+nav.dropdown {
+  width: 100%;
+  padding: 0;
 }
+
 button.btn-primary {
   position: absolute;
   min-height: 100%;
@@ -164,35 +177,41 @@ button.btn-primary {
   background-color: #bdcedc;
   border: none;
 }
+
 button {
   text-align: center;
 }
+
 button.recenter {
   border: none;
   color: #fff;
   height: 30px;
-
   background-color: #9cd8a3;
 }
+
 .recenter {
   display: none;
 }
+
 .button-icon {
   font-size: 15px;
   font-weight: 600;
   color: #fff;
 	border: #fff 10px;
 }
+
 .lon-eye-icon {
   min-width: 65px;
   max-width: 65px;
   padding: 0;
   float: right;z-index: 0;
 }
+
 @media screen and (max-width:420px){
   .lon-eye-icon {
     display: none;
   }
+
   h1 {
     font-size: 22px;
   }
@@ -202,25 +221,31 @@ button.recenter {
   width: 140px;
   height: 140px;
 }
+
 div.gm-style-iw,
 div.gm-style-iw div {
   width: 280px;
 }
+
 div.gm-style-iw {
   padding: 15px 0;
 }
+
 @media screen and (max-width: 767px){
   .markers li {
     width: 100px;
     height: 100px;
   }
+
   div.gm-style-iw,
   div.gm-style-iw div {
     width: 200px;
   }
+
   div.gm-style-iw {
     padding: 15px 0;
   }
+
   h3 {
     font-size: 14px;
     margin: 8px 0 0 0;
@@ -232,29 +257,34 @@ div.gm-style-iw {
     width: 100px;
     height: 100px;
   }
+
   div.gm-style-iw,
   div.gm-style-iw div {
     width: 200px;
   }
+
   div.gm-style-iw {
     padding: 15px 0;
   }
+
   h3 {
     font-size: 14px;
     margin: 8px 0 0 0;
   }
-
 }
+
 
 @media screen and (min-width: 992px)  and (max-width: 1199px){
   .markers li {
     width: 120px;
     height: 120px;
   }
+
   div.gm-style-iw,
   div.gm-style-iw div {
     width: 240px;
   }
+
   div.gm-style-iw {
     padding: 15px 0;
   }

@@ -1,6 +1,6 @@
 
 function googleError(){
-  console.log("Google Maps Failed To Load!");
+  alert("Google Maps Failed To Load!");
 }
 
 var map,
@@ -175,9 +175,9 @@ function initMap() {
             var q = query(); // typed into input to be compared
 
             return markers.filter(function(i) {
-                if (i.title.toLowerCase().indexOf(q) !== 0) {
+                if (i.title.toLowerCase().indexOf(q) < 0) {
                     i.setMap(null);
-                } else {
+                } else if(i.title.toLowerCase().indexOf(q) >= 0){
                     i.setMap(map);
                 }
                 return i.title.toLowerCase().indexOf(q) >= 0; //compare all location in array with input only return matching
@@ -259,10 +259,8 @@ function getFlickerImage(marker){
 
       jqXHR = $.getJSON(url, displayImages1).done(function() {
           console.log('getJSON request succeeded!');
-      })
-      .fail(function(jqXHR, textStatus, errorThrown) {
-          console.log('getJSON request failed! ' + textStatus);
-
+      }).fail(function(jqXHR, textStatus, errorThrown) {
+          alert('getJSON request failed! ' + textStatus);
       })
       .always(function() {
           console.log('getJSON request ended!');

@@ -1,9 +1,14 @@
 
+
+
 # Using the application
 
 1. Download or clone this repository to your desktop.
 2. If you downloaded the repository, unzip the file to a location of your choosing.
-3. downloaders and cloners can now both navigate into the folder 'frontend-nanodegree-feedreader'
+3. downloaders and cloners can now both navigate into the folder 'frontend-nanodegree-feedreader'.
+4. Once in the folder open the file 'index.html' in a modern browser, the latest version of google chrome is recommended.
+
+Note: all Jasmine test results are visible at the bottom of the application.
 
 
 ## Project Overview

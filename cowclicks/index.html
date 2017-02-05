@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cat Clicker</title>
+    <style>
+      div.barn {
+        text-align: center;
+        margin: 25vh auto auto auto;
+      }
+      img.cow {
+        width: 30%;
+      }
+      .counter {
+        font-size: 50px;
+      }
+    </style>
+</head>
+<body>
+    <div class="barn" data-bind="with: currentPic">
+        <img class="cow" alt="cow" data-bind="click: $parent.incrementCounter,
+        attr: {src: imgSrc}">
+        <div class="counter" data-bind="text: clickCount"></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.1/knockout-min.js"></script>
+    <script>
+    var intialPics = [ //model keeps the data
+      {
+        clickCount: 0, // clicks so far === 0
+        imgSrc: "https://upload.wikimedia.org/wikipedia/commons/2/21/Cow_cartoon_04.svg"
+      }
+    ];
+
+    var Pic = function(data) { //makes observables that means they can be accessed in the DOM
+      this.clickCount = ko.observable(data.clickCount);
+      this.imgSrc = ko.observable(data.imgSrc);
+    };
+
+    var ViewModel = function(){
+      var self = this;
+      this.picList = ko.observableArray([]);
+      //scalable functionality that allows
+      //for more images with click functionality
+      intialPics.forEach(function(picItem){
+        self.picList.push(new Pic(picItem));
+      });
+      this.currentPic = ko.observable( this.picList()[0] );
+      //updates the number of clicks when picture is clicked
+      this.incrementCounter = function() {
+        self.currentPic().clickCount(self.currentPic().clickCount() + 1);
+      };
+      //calls function that adds 1 to number of clicks
+      this.setPic = function(clickedPic){
+        self.currentPic(clickedPic);
+      };
+    };
+    ko.applyBindings(new ViewModel());
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Memoiz</title>
+  </head>
+  <body>
+    <script>
+
+      var fibonacci = (function() {
+        var memo = {}; // storing result of previously run function
+        function f(n) {
+          var value;
+          if (n in memo) {
+            // any value that has been run before will just return
+            // the value alreay calculated without having to
+            // run the function again
+            value = memo[n];
+          } else {
+            if (n === 0 || n === 1){
+              value = n;
+            } else {
+              value = f(n - 1) + f(n - 2); // keeps calling f until f === 1 or 0
+              memo[n] = value;
+            }
+          }
+          return value;
+        }
+        return f;
+      })();
+      console.log(fibonacci(100));
+
+
+    </script>
+  </body>
+</html>

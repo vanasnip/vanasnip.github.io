@@ -1,0 +1,27 @@
+<div id="sim-body" ng-class="quality" ng-init="searchKey(theKey)">
+	<button class="back-btn" ng-click="goHome()">←</button>
+	
+	<div class="limiter key-test">
+		<div class="reheight-key-test-title"></div>
+		<h1 class="degree-ques">{{theKey}} <span class="roman-deg">{{romanNumDeg}}</span></h1>
+		<h2></h2>
+		<h2 class="resp-answer" ng-class="quality">{{answer}}</h2>
+		<h2>{{dispDegree}}</h2>
+
+		<div class="reheight-answer-keys"></div>
+		<div id="answer-pg" class="col-xs-8">
+		      <ul class="col-xs-12 button-box">
+		        <li ng-repeat="note in noteNames" ng-click="respondings(note)" class="col-xs-4 note-btn"><button class="col-xs-12" ng-class="quality">{{note}}</button></li>
+		      </ul>
+		    </div>
+		<div class="col-xs-4">
+		      <ul class="col-xs-12 button-box">
+		        <li ng-repeat="mod in accidentals" ng-click="accihap(mod)" class="col-xs-12 acci-btn-li"><button class="col-xs-12 acci-btn">{{mod.sym}}</button></li>
+
+		      </ul>
+		</div>
+
+	</div>
+</div>
+
+

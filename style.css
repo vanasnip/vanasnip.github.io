@@ -1,0 +1,32 @@
+body {
+  height: 100vh;
+  background-image: url(./assets/code_bg.jpg);
+  background-size: cover;
+}
+body, .btn-col, .container-fluid, .row {
+  display: flex;
+}
+h1 {
+  text-align: center;
+  color: #e0d8b9;
+  font-family: 'Raleway', sans-serif;
+  font-size: 5.2rem;
+}
+
+.btn-col {
+  justify-content: center;
+}
+
+.container-fluid, .row{
+  align-items: center;
+  justify-content: center;
+}
+
+.container-fluid {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.btn-primary {
+  background-color: #3795b9;
+  border-color: #2b7692;
+}

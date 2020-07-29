@@ -2,7 +2,6 @@
 
 body {
   height: 100vh;
-  background-image: url(./assets/code_bg.jpg);
   background-size: cover;
 }
 body, .btn-col, .container-fluid, .row {

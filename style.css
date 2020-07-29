@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface');
+
 body {
   height: 100vh;
   background-image: url(./assets/code_bg.jpg);
@@ -29,4 +31,57 @@ h1 {
 .btn-primary {
   background-color: #3795b9;
   border-color: #2b7692;
+}
+
+body.load {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background-image: none;
+}
+.load form {
+  display: contents;
+}
+
+ol {
+  list-style: none;
+  counter-reset: my-awesome-counter;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+}
+ol li {
+  counter-increment: my-awesome-counter;
+  display: flex;
+  width: 100%;
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+ol li::before {
+  content: "0" counter(my-awesome-counter);
+  font-weight: bold;
+  font-size: 1.3rem;
+  margin-right: 0.5rem;
+  font-family: 'Abril Fatface', serif;
+  line-height: 1;
+}
+.load input {
+  border: none;
+  border-bottom: 1px solid;
+  width: 100%;
+  height: 35px;
+}
+
+.load input:focus{
+  outline: none;
+  background-color: rgb(236, 205, 210);
+
+}
+
+.load ol.input-container{
+  margin: auto;
+}
+.load .input-tile {
+  margin: 0.3rem 0;
 }

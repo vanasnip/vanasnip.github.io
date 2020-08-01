@@ -84,3 +84,8 @@ ol li::before {
 .load .input-tile {
   margin: 0.3rem 0;
 }
+
+.load .mods-container {
+  display: flex;
+  width: 50%;
+}
